@@ -30,6 +30,15 @@ if (!post) {
 
 Astro.cache.set(cacheHint);
 
+// x402: charge bots for content access
+const { x402 } = Astro.locals;
+const result = await x402.enforce(Astro.request, {
+	price: "$0.01",
+	description: post.data.title,
+});
+if (result instanceof Response) return result;
+x402.applyHeaders(result, Astro.response);
+
 // Get featured image URL for OG fallback
 // The image may have src (external) or meta.storageKey (local)
 function getImageUrl(img: unknown): string | undefined {

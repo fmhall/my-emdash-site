@@ -2,6 +2,7 @@
 // Do not edit manually
 
 /// <reference types="emdash/locals" />
+/// <reference types="@emdash-cms/x402/locals" />
 
 import type { ContentBylineCredit, PortableTextBlock } from "emdash";
 
